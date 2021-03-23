@@ -55,7 +55,7 @@ namespace Standard.Licensing.Validation
         {
             var validationChainBuilder = (validationChain as ValidationChainBuilder);
             var validator = validationChainBuilder.StartValidatorChain();
-            validator.Validate = license => license.Expiration > DateTime.Now;
+            validator.Validate = license => license.Expiration > DateTime.Now.ToUniversalTime();
 
             validator.FailureResult = new LicenseExpiredValidationFailure()
             {
